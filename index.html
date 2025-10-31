@@ -10,17 +10,19 @@
       background: #f5f5f5;
       margin: 0;
       padding: 0;
+       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
 
     header {
-      background: #007b5e;
-      color: white;
+      background: gray;
+      color: silver;
       text-align: center;
       padding: 20px;
+       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
 
     .card {
-      background: white;
+      background: gray;
       width: 300px;
       margin: 30px auto;
       border-radius: 10px;
@@ -42,12 +44,13 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
+       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
 
     
 
     .whatsapp-btn {
-      background-color: #25d366;
+      background-color: #2b0b75;
     }
 
     section {
@@ -61,13 +64,15 @@
       margin: 10px;
       border-radius: 10px;
       object-fit: cover;
+        box-shadow: 0 4px 8px rgba(55, 3, 114, 0.836);
     }
 
     footer {
-      background: #007b5e;
-      color: white;
+      background: gray;
+      color: black;
       text-align: center;
       padding: 15px;
+       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
     .call-button {
      display: inline-block;
@@ -77,68 +82,120 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
-      background-color: #25d366;
-      border: #25d366;
+      background-color: #350888;
+      border: #23086b;
+       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
-    
      body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f7f7f7;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+      margin: 0;
+      padding: 40px;
+       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
+
     h1 {
       text-align: center;
+      color: silver;
+      margin-bottom: 40px;
     }
-    form {
-      max-width: 400px;
-      margin: 0 auto 30px auto;
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
+
     .catalog {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
     .product-card {
-      background-color: white;
-      padding: 15px;
-      width: 200px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
+      background: silver;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(52, 2, 117, 0.596);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
+    }
+
     .product-card img {
       width: 100%;
-      border-radius: 6px;
+      height: 200px;
+      object-fit: cover;
     }
+
+    .product-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      font-size: 18px;
+      color: #222;
+      margin: 10px 0;
+    }
+
+    .product-info p {
+      font-size: 14px;
+      color: #777;
+    }
+
     .price {
-      color: #28a745;
+      font-size: 16px;
+      color: #e74c3c;
       font-weight: bold;
       margin-top: 10px;
     }
- 
+
+    .buy-btn {
+      margin-top: 15px;
+      background: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .buy-btn:hover {
+      background: #2980b9;
+    }
+    /* Size Box Container */
+  .size-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  /* Each Size Option */
+  .size {
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+
+  /* Hover Effect */
+  .size:hover {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+  }
+
+  /* Selected State */
+  .size.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+  }
+    
   </style>
 </head>
 <body>
@@ -147,24 +204,66 @@
     <h1>Welcome to Swastik Industry</h1>
     <p>Located in Muzaffarpur, Bihar</p>
   </header>
+<body>
 
-  <div class="card">
-    <img src="download.jpg" alt="Service Image">
-    <h2>Our Services</h2> 
-  <a href="tel:+916205850061"><button class="call-button">📞 CALL NOW</button></a>
-    <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">WhatsApp</a>
+  <h1>Our Product</h1>
+   <div class="size-box">
+    <div class="size">1</div>
+    <div class="size">1.5</div>
+    <div class="size">2</div>
+    <div class="size">2.5</div>
+    <div class="size">3</div>
   </div>
-   <my-private-widget>
-  <form id="productForm">
-    <input type="text" id="name" placeholder="Product Name" required>
-    <input type="text" id="price" placeholder="Price" required>
-    <input type="text" id="image" placeholder="Image URL" required>
-    <textarea id="description" placeholder="Description" rows="3"></textarea>
-    <button type="submit">Add Product</button>
-  </form>
-  </my-private-widget>
- 
-  <div class="catalog" id="catalog"></div>
+
+  <div class="catalog">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="download (3).jpg" alt="Product 1">
+      <div class="product-info">
+      
+        <p><b>High quality</b> </p>
+       
+         <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="67e224d5487ed79254.webp" alt="Product 2">
+      <div class="product-info">
+        
+        <p><b>Export High quality</b> </p>
+       
+  
+        <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <img src="ms-wire-nail5" alt="Product 3">
+      <div class="product-info">
+        
+        <p><b>High quality</b></p>
+       
+       <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <img src="download (3).jpg" alt="Product 4">
+      <div class="product-info">
+        
+        <p><b>High quality</b></p>
+        
+         <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
    
   <section id="about">
     <h2>About Us</h2>
@@ -173,9 +272,9 @@
 
   <section id="gallery" class="gallery">
     <h2>Gallery</h2>
-    <img src="download (1).jpg" alt="Gallery 1">
-    <img src="download.jpg" alt="Gallery 2">
-    <img src="download (1).jpg" alt="Gallery 3">
+    <img src="img4" alt="Gallery 1">
+    <img src="ms-wire-nail5" alt="Gallery 2">
+    <img src="rusty-iron-nail-collection-free-png.webp" alt="Gallery 3">
   </section>
 
   <section id="address">
@@ -183,42 +282,23 @@
     <p>📍 Muzaffarpur, Bihar</p>
     <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book on WhatsApp</a>
   </section>
-
+  
   <footer>
     <p>© 2025 Your Business | Muzaffarpur, Bihar</p>
   </footer>
 
 </body>
- 
-<script>
-    const form = document.getElementById('productForm');
-    const catalog = document.getElementById('catalog');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value;
-      const price = document.getElementById('price').value;
-      const image = document.getElementById('image').value;
-      const description = document.getElementById('description').value;
-
-      // Create product card
-      const card = document.createElement('div');
-      card.className = 'product-card';
-      card.innerHTML = `
-        <img src="${image}" alt="${name}">
-        <h3>${name}</h3>
-        <p>${description}</p>
-        <p class="price">$${price}</p>
-      `;
-
-      // Add card to catalog
-      catalog.appendChild(card);
-
-      // Reset form
-      form.reset();
+ <script>
+  // Make size boxes selectable
+  const sizes = document.querySelectorAll('.size');
+  sizes.forEach(size => {
+    size.addEventListener('click', () => {
+      sizes.forEach(s => s.classList.remove('active'));
+      size.classList.add('active');
     });
-  </script>
+  });
+</script>
+
 
 
 </html>

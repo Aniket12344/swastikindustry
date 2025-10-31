@@ -44,9 +44,7 @@
       font-weight: bold;
     }
 
-    .enquiry-btn {
-      background-color: #007bff;
-    }
+    
 
     .whatsapp-btn {
       background-color: #25d366;
@@ -71,6 +69,76 @@
       text-align: center;
       padding: 15px;
     }
+    .call-button {
+     display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      border-radius: 5px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      background-color: #25d366;
+      border: #25d366;
+    }
+    
+     body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f7f7f7;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .catalog {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .product-card {
+      background-color: white;
+      padding: 15px;
+      width: 200px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .price {
+      color: #28a745;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+ 
   </style>
 </head>
 <body>
@@ -82,12 +150,22 @@
 
   <div class="card">
     <img src="download.jpg" alt="Service Image">
-    <h2>Our Services</h2>
-    <p>We provide quality services to our customers in Muzaffarpur.</p>
-    <a href="swastiknailindustries@gmail.com" class="btn enquiry-btn">Enquiry</a>
+    <h2>Our Services</h2> 
+  <a href="tel:+916205850061"><button class="call-button">📞 CALL NOW</button></a>
     <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">WhatsApp</a>
   </div>
-
+   <my-private-widget>
+  <form id="productForm">
+    <input type="text" id="name" placeholder="Product Name" required>
+    <input type="text" id="price" placeholder="Price" required>
+    <input type="text" id="image" placeholder="Image URL" required>
+    <textarea id="description" placeholder="Description" rows="3"></textarea>
+    <button type="submit">Add Product</button>
+  </form>
+  </my-private-widget>
+ 
+  <div class="catalog" id="catalog"></div>
+   
   <section id="about">
     <h2>About Us</h2>
     <p>We are a trusted business based in Muzaffarpur, Bihar, committed to offering the best service experience.</p>
@@ -111,4 +189,36 @@
   </footer>
 
 </body>
+ 
+<script>
+    const form = document.getElementById('productForm');
+    const catalog = document.getElementById('catalog');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const price = document.getElementById('price').value;
+      const image = document.getElementById('image').value;
+      const description = document.getElementById('description').value;
+
+      // Create product card
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML = `
+        <img src="${image}" alt="${name}">
+        <h3>${name}</h3>
+        <p>${description}</p>
+        <p class="price">$${price}</p>
+      `;
+
+      // Add card to catalog
+      catalog.appendChild(card);
+
+      // Reset form
+      form.reset();
+    });
+  </script>
+
+
 </html>

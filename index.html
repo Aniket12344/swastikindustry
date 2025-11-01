@@ -353,7 +353,7 @@
     <input type="text" id="size" placeholder="Enter size (e.g. 1, 2, 3)" required>
 
     <label>Address:</label>
-    <textarea id="address" placeholder="Enter your address" required></textarea>
+    <textarea id="add" placeholder="Enter your address" required></textarea>
 
     <label>Comment:</label>
     <textarea id="comment" placeholder="Add your comment" required></textarea>
@@ -391,16 +391,15 @@
 
     let name = document.getElementById("name").value;
     let size = document.getElementById("size").value;
-    let address = document.getElementById("address").value;
+    let address = document.getElementById("add").value;
     let comment = document.getElementById("comment").value;
 
     let message = `Hello! I want to make an enquiry.%0A%0A👤 Name: ${name}%0A📏 Size: ${size}%0A🏠 Address: ${address}%0A💬 Comment: ${comment}`;
 
-    window.open(`https://wa.me/916205850061?text=${message}`, "_blank");
+    window.open(`https://wa.me/916205850061?text=${message}`, "THANKYOU");
   });
 </script>
 
 
 
 </html>
-

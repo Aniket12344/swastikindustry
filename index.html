@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       background: #f5f5f5;
       margin: 0;
-      padding: 14px;
+      padding: 0;
        box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
     }
 
@@ -106,6 +106,7 @@
       gap: 25px;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 20px;
     }
 
     .product-card {
@@ -195,16 +196,73 @@
     color: white;
     border-color: #3498db;
   }
+
+   /* WhatsApp Button */
+  #whatsappBtn {
+    background-color: #25D366;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(52, 2, 117, 0.596);
+  }
+
+  /* Hidden Form Box */
+  #enquiryForm {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    background: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(52, 2, 117, 0.596);
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button[type="submit"] {
+    background-color: #25D366;
+    color: white;
+    font-size: 16px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+  }
     
   </style>
 </head>
 <body>
 
+<style>
+.whatsapp-float {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   z-index: 100;
+}
+.whatsapp-float img {
+   border-radius: 50%;
+   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+</style>
+
   <header>
     <h1>Welcome to Swastik Industry</h1>
     <p>Located in Muzaffarpur, Bihar</p>
   </header>
-<body>
+
 
   <h1>Our Product</h1>
    <div class="size-box">
@@ -280,14 +338,37 @@
   <section id="address">
     <h2>Address</h2>
     <p>📍 Muzaffarpur, Bihar</p>
-    <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book on WhatsApp</a>
+    
+     <!-- WhatsApp Button -->
+<button id="whatsappBtn">💬 Enquire on WhatsApp</button>
+
+<!-- Hidden Enquiry Form -->
+<div id="enquiryForm">
+  <h3>📝 Enquiry Form</h3>
+  <form id="whatsappForm">
+    <label>Name:</label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <label>Size:</label>
+    <input type="text" id="size" placeholder="Enter size (e.g. 1, 2, 3)" required>
+
+    <label>Address:</label>
+    <textarea id="address" placeholder="Enter your address" required></textarea>
+
+    <label>Comment:</label>
+    <textarea id="comment" placeholder="Add your comment" required></textarea>
+
+    <button type="submit">📩 Send on WhatsApp</button>
+  </form>
+</div>
+    
   </section>
-  
+ 
   <footer>
     <p>© 2025 Your Business | Muzaffarpur, Bihar</p>
   </footer>
 
-</body>
+
  <script>
   // Make size boxes selectable
   const sizes = document.querySelectorAll('.size');
@@ -297,13 +378,28 @@
       size.classList.add('active');
     });
   });
+
+   // Toggle form visibility
+  document.getElementById("whatsappBtn").addEventListener("click", function() {
+    let form = document.getElementById("enquiryForm");
+    form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+  });
+
+  // Handle form submission
+  document.getElementById("whatsappForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let size = document.getElementById("size").value;
+    let address = document.getElementById("address").value;
+    let comment = document.getElementById("comment").value;
+
+    let message = `Hello! I want to make an enquiry.%0A%0A👤 Name: ${name}%0A📏 Size: ${size}%0A🏠 Address: ${address}%0A💬 Comment: ${comment}`;
+
+    window.open(`https://wa.me/916205850061?text=${message}`, "_blank");
+  });
 </script>
 
 
 
 </html>
-
-
-
-
-

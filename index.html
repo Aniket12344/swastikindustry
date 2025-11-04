@@ -1,405 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Swastik Industry| Muzaffarpur</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 0;
-       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
+<script>
+  // 🔥 Replace with your Firebase project credentials
+  const firebaseConfig = {
+   apiKey: "AIzaSyAFiy4hX-7d2_Xf8QfIYOiG8je0F9h0mT8",
+  authDomain: "swastik-industry.firebaseapp.com",
+  databaseURL: "https://swastik-industry-default-rtdb.firebaseio.com",
+  projectId: "swastik-industry",
+  storageBucket: "swastik-industry.firebasestorage.app",
+  messagingSenderId: "981455584221",
+  appId: "1:981455584221:web:9119915b1caf3c45055434",
+  measurementId: "G-Z36M010W8D"
+  };
 
-    header {
-      background: gray;
-      color: silver;
-      text-align: center;
-      padding: 10px;
-       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
-    .card {
-      background: gray;
-      width: 300px;
-      margin: 30px auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      text-align: center;
-      padding: 20px;
-    }
+  const openChat = document.getElementById("openChat");
+  const chatBox = document.getElementById("chatBox");
+  const chatMessages = document.getElementById("chatMessages");
+  const chatInput = document.getElementById("chatInput");
+  const sendBtn = document.getElementById("sendBtn");
 
-    .card img {
-      width: 100%;
-      border-radius: 10px;
-    }
+  const user = "User-" + Math.floor(Math.random() * 10000);
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px 5px;
-      border-radius: 5px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
-
-    
-
-    .whatsapp-btn {
-      background-color: #2b0b75;
-    }
-
-    section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .gallery img {
-      width: 200px;
-      height: 150px;
-      margin: 10px;
-      border-radius: 10px;
-      object-fit: cover;
-        box-shadow: 0 4px 8px rgba(55, 3, 114, 0.836);
-    }
-
-    footer {
-      background: gray;
-      color: black;
-      text-align: center;
-      padding: 15px;
-       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
-    .call-button {
-     display: inline-block;
-      padding: 10px 20px;
-      margin: 10px 5px;
-      border-radius: 5px;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      background-color: #350888;
-      border: #23086b;
-       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
-     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f7fa;
-      margin: 0;
-      padding: 0px;
-       box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
-
-    h1 {
-      text-align: center;
-      color: silver;
-      margin-bottom: 40px;
-    }
-
-    .catalog {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .product-card {
-      background: silver;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(52, 2, 117, 0.596);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 6px 15px rgba(55, 7, 143, 0.562);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .product-info h3 {
-      font-size: 18px;
-      color: #222;
-      margin: 10px 0;
-    }
-
-    .product-info p {
-      font-size: 14px;
-      color: #777;
-    }
-
-    .price {
-      font-size: 16px;
-      color: #e74c3c;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .buy-btn {
-      margin-top: 15px;
-      background: #3498db;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .buy-btn:hover {
-      background: #2980b9;
-    }
-    /* Size Box Container */
-  .size-box {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin: 15px 0;
-  }
-
-  /* Each Size Option */
-  .size {
-    border: 1px solid #ccc;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 500;
-  }
-
-  /* Hover Effect */
-  .size:hover {
-    background-color: #3498db;
-    color: #fff;
-    border-color: #3498db;
-  }
-
-  /* Selected State */
-  .size.active {
-    background-color: #3498db;
-    color: white;
-    border-color: #3498db;
-  }
-
-   /* WhatsApp Button */
-  #whatsappBtn {
-    background-color: #25D366;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(52, 2, 117, 0.596);
-  }
-
-  /* Hidden Form Box */
-  #enquiryForm {
-    display: none;
-    margin-top: 15px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    max-width: 400px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 10px rgba(52, 2, 117, 0.596);
-  }
-
-  input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin: 6px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  button[type="submit"] {
-    background-color: #25D366;
-    color: white;
-    font-size: 16px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-  }
-    
-  </style>
-</head>
-<body>
-
-<style>
-.whatsapp-float {
-   position: fixed;
-   bottom: 20px;
-   right: 20px;
-   z-index: 100;
-}
-.whatsapp-float img {
-   border-radius: 50%;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-</style>
-
-  <header>
-    <h1>Welcome to Swastik Industry</h1>
-    <p>Located in Muzaffarpur, Bihar</p>
-  </header>
-
-
-  <h1>Our Product</h1>
-   <div class="size-box">
-    <div class="size">1</div>
-    <div class="size">1.5</div>
-    <div class="size">2</div>
-    <div class="size">2.5</div>
-    <div class="size">3</div>
-  </div>
-
-  <div class="catalog">
-    <!-- Product 1 -->
-    <div class="product-card">
-      <img src="51kK+VB2IXL._AC_UF1000,1000_QL80_.jpg" alt="Product 1">
-      <div class="product-info">
-      
-        <p><b>High quality</b> </p>
-       
-         <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Product 2 -->
-    <div class="product-card">
-      <img src="wire-nails.jpg" alt="Product 2">
-      <div class="product-info">
-        
-        <p><b>Export High quality</b> </p>
-       
-  
-        <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Product 3 -->
-    <div class="product-card">
-      <img src="images.jpg" alt="Product 3">
-      <div class="product-info">
-        
-        <p><b>High quality</b></p>
-       
-       <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
-      </div>
-    </div>
-
-    <!-- Product 4 -->
-    <div class="product-card">
-      <img src="images (1).jpg" alt="Product 4">
-      <div class="product-info">
-        
-        <p><b>High quality</b></p>
-        
-         <a href="https://wa.me/916205850061?text=Hi!%20I%20want%20to%20book%20a%20service." class="btn whatsapp-btn">Book Now</a>
-      </div>
-    </div>
-  </div>
-
-</body>
-
-   
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We are a trusted business based in Muzaffarpur, Bihar, committed to offering the best service experience.</p>
-  </section>
-
-  <section id="gallery" class="gallery">
-    <h2>Gallery</h2>
-    <img src="51kK+VB2IXL._AC_UF1000,1000_QL80_.jpg" alt="Gallery 1">
-    <img src="wire-nails.jpg" alt="Gallery 2">
-    <img src="images.jpg" alt="Gallery 3">
-  </section>
-
-  <section id="address">
-    <h2>Address</h2>
-    <p>📍 Muzaffarpur, Bihar</p>
-    
-     <!-- WhatsApp Button -->
-<button id="whatsappBtn">💬 Enquire on WhatsApp</button>
-
-<!-- Hidden Enquiry Form -->
-<div id="enquiryForm">
-  <h3>📝 Enquiry Form</h3>
-  <form id="whatsappForm">
-    <label>Name:</label>
-    <input type="text" id="name" placeholder="Enter your name" required>
-
-    <label>Size:</label>
-    <input type="text" id="size" placeholder="Enter size (e.g. 1, 2, 3)" required>
-
-    <label>Address:</label>
-    <textarea id="add" placeholder="Enter your address" required></textarea>
-
-    <label>Comment:</label>
-    <textarea id="comment" placeholder="Add your comment" required></textarea>
-
-    <button type="submit">SUBMIT</button>
-  </form>
-</div>
-    
-  </section>
- 
-  <footer>
-    <p>© 2025 Your Business | Muzaffarpur, Bihar</p>
-  </footer>
-
-
- <script>
-  // Make size boxes selectable
-  const sizes = document.querySelectorAll('.size');
-  sizes.forEach(size => {
-    size.addEventListener('click', () => {
-      sizes.forEach(s => s.classList.remove('active'));
-      size.classList.add('active');
-    });
+  openChat.addEventListener("click", () => {
+    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
   });
 
-   // Toggle form visibility
-  document.getElementById("whatsappBtn").addEventListener("click", function() {
-    let form = document.getElementById("enquiryForm");
-    form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+  sendBtn.addEventListener("click", sendMessage);
+  chatInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
   });
 
-  // Handle form submission
-  document.getElementById("whatsappForm").addEventListener("submit", function(event) {
-    event.preventDefault();
+  function sendMessage() {
+    const msg = chatInput.value.trim();
+    if (!msg) return;
+    const messageData = { user, text: msg, time: Date.now() };
+    db.ref("messages").push(messageData);
+    chatInput.value = "";
+  }
 
-    let name = document.getElementById("name").value;
-    let size = document.getElementById("size").value;
-    let address = document.getElementById("add").value;
-    let comment = document.getElementById("comment").value;
-
-    let message = `Hello! I want to make an enquiry.%0A%0A👤 Name: ${name}%0A📏 Size: ${size}%0A🏠 Address: ${address}%0A💬 Comment: ${comment}`;
-
-    window.open(`https://wa.me/916205850061?text=${message}`, "THANKYOU");
+  // Display messages in real time
+  db.ref("messages").on("child_added", (snapshot) => {
+    const data = snapshot.val();
+    const div = document.createElement("div");
+    div.textContent = `${data.user}: ${data.text}`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
   });
 </script>
-
-
-
-</html>
